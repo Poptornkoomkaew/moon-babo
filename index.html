@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ฐานจันทรา: เอาชีวิตรอดบนดวงจันทร์</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/hud.css">
+<link rel="stylesheet" href="css/overlays.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<div id="app">
+  <div id="hud">
+    <div class="m" id="mo"><span>ออกซิเจน</span><em id="vo"></em><i><b id="bo"></b></i></div>
+    <div class="m" id="mp"><span>พลังงาน</span><em id="vp"></em><i><b id="bp"></b></i></div>
+    <div class="m" id="mh"><span>ความแข็งแรงฐาน</span><em id="vh"></em><i><b id="bh"></b></i></div>
+    <div id="tm"></div>
+  </div>
+  <div id="ban"></div>
+  <div id="cw"><canvas id="c" width="960" height="660" aria-label="หน้าตัดฐานวิจัยบนดวงจันทร์"></canvas><div id="hint" role="status"></div></div>
+  <div id="crew"></div>
+  <div class="tip">คลิกลูกเรือ (หรือกด 1 2 3) แล้วคลิกเป้าหมายเพื่อสั่งงาน · ฐานมี 3 ชั้น ทุก 2 วันได้เลือกห้องใหม่</div>
+
+  <div class="ov" id="menu">
+    <h1>ฐานจันทรา</h1>
+    <p>คุณคุมลูกเรือ 3 คนบนฐานวิจัยดวงจันทร์ สั่งใครไปซ่อมรอยรั่ว ปิดประตูผนึก หรือประจำสถานีที่ช่วยผลิตออกซิเจนและไฟ งานทุกอย่างใช้เวลา และคนมีแค่สามคน</p>
+    <div id="opts" role="group" aria-label="เลือกระยะเวลาเล่น">
+      <button data-d="6">สั้น · 3 นาที (6 วัน)</button>
+      <button data-d="10" class="sel">กลาง · 5 นาที (10 วัน)</button>
+      <button data-d="16">ยาว · 8 นาที (16 วัน)</button>
+    </div>
+    <button id="go">เริ่มภารกิจ</button>
+  </div>
+  <div class="ov glass hide" id="tut"><div class="panel"><h2 id="tt"></h2><p id="tp"></p><div class="dots" id="td"></div><div class="row"><button id="tprev">ย้อนกลับ</button><button id="tskip">ข้าม</button><button id="tnext">ต่อไป</button></div></div></div>
+  <div class="ov glass hide" id="cards"><h1 style="font-size:clamp(22px,5vw,34px)">ห้องใหม่</h1><p id="cday"></p><div id="cardbox"></div></div>
+  <div class="ov hide" id="end">
+    <h1 id="et"></h1>
+    <p id="ed"></p>
+    <button id="again">เลือกใหม่</button>
+  </div>
+</div>
+
+<!-- ลำดับการโหลดสำคัญ: ไฟล์ด้านบนต้องมาก่อนไฟล์ที่ใช้มัน -->
+<!-- core: เครื่องมือพื้นฐาน -->
+<script src="js/core/utils.js"></script>
+<!-- config: ข้อมูลคงที่ -->
+<script src="js/config/palette.js"></script>
+<script src="js/config/constants.js"></script>
+<script src="js/config/rooms.js"></script>
+<script src="js/config/text.js"></script>
+<!-- core: state ของเกม -->
+<script src="js/core/state.js"></script>
+<!-- graphics + animation -->
+<script src="js/graphics/canvas.js"></script>
+<script src="js/animation/ambient.js"></script>
+<script src="js/animation/effects.js"></script>
+<script src="js/animation/crew-sprite.js"></script>
+<script src="js/graphics/background.js"></script>
+<script src="js/graphics/room-props.js"></script>
+<script src="js/graphics/structure.js"></script>
+<script src="js/graphics/labels.js"></script>
+<script src="js/graphics/renderer.js"></script>
+<!-- systems: กติกาเกม -->
+<script src="js/systems/crew.js"></script>
+<script src="js/systems/events.js"></script>
+<script src="js/systems/resources.js"></script>
+<script src="js/systems/room-builder.js"></script>
+<!-- ui + input -->
+<script src="js/ui/hud.js"></script>
+<script src="js/ui/screens.js"></script>
+<script src="js/ui/cards.js"></script>
+<script src="js/ui/tutorial.js"></script>
+<script src="js/input/pointer.js"></script>
+<script src="js/input/keyboard.js"></script>
+<!-- core: วนลูปและเริ่มเกม -->
+<script src="js/core/game.js"></script>
+<script src="js/core/main.js"></script>
+</body>
+</html>
