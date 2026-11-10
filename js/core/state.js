@@ -14,9 +14,6 @@ const powered=()=>G.pw>0;
 function reset(){
   G={t:0,days:days,o2:100,pw:100,hull:100,rooms:[{f:0,c:0,type:'ctrl'},{f:0,c:1,type:'power'},{f:0,c:2,type:'green'}],slot:0,lc:-1,d:[[0,0],[0,0],[0,0]],br:[],sol:false,sp:0,st:null,ev:12,shake:0,run:true,paused:true,hits:0,fixed:0,flash:0,bt:0,ht:0,sel:0,mk:null,
    crew:NAMES.map((n,i)=>({n:n[0],col:n[1],sh:n[2],x:380+i*50,yy:FYs[0],fl:0,cl:null,task:null,t:0,mv:false,f:1}))};
-  $('crew').innerHTML='';cards=G.crew.map((c,i)=>{
-    const d=document.createElement('button');d.className='cr';d.style.setProperty('--c',c.col);
-    d.innerHTML='<strong>'+(i+1)+' '+c.n+'</strong><small>ว่าง</small><i><b></b></i>';
-    d.addEventListener('click',()=>{if(G&&G.run)G.sel=i});$('crew').appendChild(d);return d});
-  $('hint').className='';$('ban').textContent='';
+  buildCrewCards();   // ui/hud.js
+  clearMessages();
 }

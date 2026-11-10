@@ -6,7 +6,7 @@ function tf(t){return t.k==='br'?t.o.f:t.k==='d'||t.k==='move'?t.f:t.k==='fix'?t
 // ลูกเรือ c ประจำสถานี k อยู่ไหม (ชั้นล่างเท่านั้น)
 function at(c,k){return c.fl===0&&!c.cl&&c.task&&c.task.k===k&&Math.abs(c.x-tx(c.task))<5}
 const stationed=k=>G.crew.some(c=>at(c,k));
-function label(t){return t.k==='d'?(G.d[t.f][t.i]?'เปิดประตูผนึก':'ปิดประตูผนึก'):t.k==='fix'?'ซ่อม'+TYPES[t.rm.type].n:LBL[t.k]}
+function label(t){return t.k==='d'?(G.d[t.f][t.i]?'เปิด':'ปิด'):LBL[t.k]}
 function arrived(c,t){return Math.abs(c.x-tx(t))<=3&&c.fl===tf(t)&&!c.cl}
 
 // อัปเดตลูกเรือทุกคนต่อเฟรม (rep = ความเร็วซ่อม, spd = ความเร็วเดิน)
@@ -26,9 +26,9 @@ function updateCrew(dt,rep,spd){
     }
     if(Math.abs(tx(t)-c.x)>3){mv(tx(t));return}
     if(t.k==='move'){c.task=null;return}
-    if(t.k==='br'){t.o.p+=dt*rep/3;if(t.o.p>=1){G.br=G.br.filter(b=>b!==t.o);G.hull=Math.min(100,G.hull+4);G.fixed++;ban('ซ่อมรอยรั่วสำเร็จ','')}}
-    else if(t.k==='sol'){G.sp+=dt*rep/5;if(G.sp>=1){G.sol=false;G.fixed++;ban('ซ่อมแผงโซลาร์สำเร็จ','')}}
-    else if(t.k==='fix'){t.rm.fp+=dt*rep/4;if(t.rm.fp>=1){t.rm.broken=false;t.rm.fp=0;G.fixed++;ban('ซ่อม'+TYPES[t.rm.type].n+'สำเร็จ','')}}
-    else if(t.k==='d'){c.t+=dt;if(c.t>=1){G.d[t.f][t.i]=G.d[t.f][t.i]?0:1;c.task=null;ban(G.d[t.f][t.i]?'ปิดประตูผนึกแล้ว':'เปิดประตูผนึกแล้ว','')}}
+    if(t.k==='br'){t.o.p+=dt*rep/3;if(t.o.p>=1){G.br=G.br.filter(b=>b!==t.o);G.hull=Math.min(100,G.hull+4);G.fixed++;ban('ซ่อมแล้ว','ok','crack')}}
+    else if(t.k==='sol'){G.sp+=dt*rep/5;if(G.sp>=1){G.sol=false;G.fixed++;ban('ซ่อมแล้ว','ok','solar')}}
+    else if(t.k==='fix'){t.rm.fp+=dt*rep/4;if(t.rm.fp>=1){t.rm.broken=false;t.rm.fp=0;G.fixed++;ban('ซ่อมแล้ว','ok',TYPES[t.rm.type].ic)}}
+    else if(t.k==='d'){c.t+=dt;if(c.t>=1){G.d[t.f][t.i]=G.d[t.f][t.i]?0:1;c.task=null;ban(G.d[t.f][t.i]?'ปิด':'เปิด','','door')}}
   });
 }

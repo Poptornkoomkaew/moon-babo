@@ -9,5 +9,5 @@ function offer(){
 function build(k){
   const s=SLOTS[G.slot++];G.rooms.push({f:s[0],c:s[1],type:k,broken:false,fp:0});
   G.paused=false;$('cards').classList.add('hide');G.flash=0;
-  hint('สร้าง'+TYPES[k].n+'แล้ว','ข้อดี: '+TYPES[k].pro+' · ระวัง: '+TYPES[k].con,'');
+  const Y=TYPES[k];hint(Y.n,'','ok',Y.ic,null,Y.pros.map(p=>p.concat('pro')).concat(Y.cons.map(p=>p.concat('con'))));
 }
