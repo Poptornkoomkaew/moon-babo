@@ -1,5 +1,8 @@
 /* ===== overlays.css : เมนูเริ่ม, สอนเล่น, เลือกห้องใหม่, หน้าจบเกม ===== */
 .ov{position:absolute;inset:0;background:rgba(26,28,44,.97);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:20px;z-index:5}
+#menu{background:#1a1c2c;overflow:hidden}
+#menubg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;z-index:0}
+#menu > *:not(#menubg){position:relative;z-index:1}
 .ov h1{margin:0;font-weight:600;font-size:clamp(30px,7vw,52px);color:var(--warn);text-shadow:4px 4px 0 #b13e53}
 .ov.glass{background:rgba(26,28,44,.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 #mhero{display:flex;gap:10px;align-items:center}
